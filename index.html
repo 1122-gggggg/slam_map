@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VisionMap — 無人機自主飛行與 3D 重建</title>
+  <meta name="description" content="VisionMap 研發無人機自動飛行與 3D 建模演算法：自主航線規劃、視覺定位、攝影測量與神經渲染，把真實世界重建為可量測的 3D 數位模型。">
+  <meta name="theme-color" content="#05080d">
+  <meta property="og:title" content="VisionMap — 無人機自主飛行與 3D 重建">
+  <meta property="og:description" content="自動飛行與 3D 建模演算法研發。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://visionmap.tech">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2305080d'/%3E%3Cpath d='M6 9l10 16L26 9' fill='none' stroke='%2338e1ff' stroke-width='3' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">跳至主要內容</a>
+
+  <header class="nav" id="nav">
+    <div class="wrap nav__in">
+      <a class="logo" href="#top" aria-label="VisionMap 首頁">
+        <svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><path d="M5 8l11 17L27 8" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><circle cx="16" cy="25" r="2.6" fill="currentColor"/></svg>
+        <span>VisionMap</span>
+      </a>
+      <nav class="menu" id="menu" aria-label="主選單">
+        <a href="#technology">核心技術</a>
+        <a href="#solutions">解決方案</a>
+        <a href="#pipeline">運作方式</a>
+        <a href="#safety">安全</a>
+        <a href="#about">關於我們</a>
+        <a class="btn btn--sm" href="#contact">聯絡我們</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="開啟選單" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <canvas id="scene" aria-hidden="true"></canvas>
+      <div class="hero__shade"></div>
+      <div class="wrap hero__in">
+        <p class="eyebrow"><i></i>Autonomous Aerial Intelligence</p>
+        <h1>讓無人機<br><em>自主飛行</em>，<br>重建 3D 世界。</h1>
+        <p class="lead">VisionMap 專注於無人機自動飛行與 3D 建模演算法研發——從自主航線規劃、視覺定位到攝影測量與神經渲染，把真實場景轉換成可量測、可分析的 3D 數位模型。</p>
+        <div class="cta">
+          <a class="btn" href="#contact">預約技術簡報</a>
+          <a class="btn btn--ghost" href="#technology">探索技術 <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <div class="hero__legend wrap" aria-hidden="true">
+        <span><b class="dot dot--c"></b>3D 點雲</span>
+        <span><b class="dot dot--g"></b>飛行航線</span>
+        <span><b class="dot dot--y"></b>網格重建</span>
+      </div>
+      <a class="scroll" href="#technology" aria-label="向下捲動"><span></span></a>
+    </section>
+
+    <!-- TRUST BAR -->
+    <section class="trust">
+      <div class="wrap trust__in">
+        <p>應用領域</p>
+        <ul>
+          <li>測繪與地形</li>
+          <li>營建進度管理</li>
+          <li>基礎設施巡檢</li>
+          <li>能源與電力</li>
+          <li>農林與環境</li>
+          <li>數位孿生</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- TECHNOLOGY -->
+    <section class="sec" id="technology">
+      <div class="wrap">
+        <header class="sec__head reveal">
+          <p class="eyebrow"><i></i>核心技術</p>
+          <h2>從起飛到模型，<br>完整的演算法堆疊。</h2>
+          <p>飛行決定資料品質，資料品質決定模型品質。我們同時研發兩端，並讓它們彼此回饋。</p>
+        </header>
+
+        <div class="grid grid--4">
+          <article class="card reveal">
+            <div class="ico"><svg viewBox="0 0 48 48"><circle cx="10" cy="38" r="4"/><circle cx="38" cy="10" r="4"/><path d="M13 36c14 2 6-14 14-16s8-6 8-6"/></svg></div>
+            <h3>自主飛行</h3>
+            <p>覆蓋式航線規劃、即時避障與動態重規劃，依地形與重建需求自動產生最佳拍攝軌跡。</p>
+            <span class="tag">Autonomy</span>
+          </article>
+          <article class="card reveal">
+            <div class="ico"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="4"/><circle cx="24" cy="24" r="12"/><path d="M24 4v8M24 36v8M4 24h8M36 24h8"/></svg></div>
+            <h3>視覺定位與 SLAM</h3>
+            <p>融合視覺、IMU 與 GNSS 的狀態估計；在 GNSS 受限的橋下、林間與室內仍可持續定位。</p>
+            <span class="tag">VIO / SLAM</span>
+          </article>
+          <article class="card reveal">
+            <div class="ico"><svg viewBox="0 0 48 48"><path d="M24 4l18 10v20L24 44 6 34V14z"/><path d="M6 14l18 10 18-10M24 24v20"/></svg></div>
+            <h3>3D 重建</h3>
+            <p>運動恢復結構（SfM）、多視角立體（MVS）、網格生成與紋理貼圖，產出高密度點雲與可量測模型。</p>
+            <span class="tag">Photogrammetry</span>
+          </article>
+          <article class="card reveal">
+            <div class="ico"><svg viewBox="0 0 48 48"><circle cx="14" cy="14" r="2"/><circle cx="34" cy="10" r="2"/><circle cx="24" cy="24" r="2"/><circle cx="10" cy="34" r="2"/><circle cx="36" cy="36" r="2"/><circle cx="40" cy="22" r="2"/><path d="M14 14l10 10M34 10L24 24M24 24L10 34M24 24l12 12M24 24l16-2"/></svg></div>
+            <h3>神經渲染</h3>
+            <p>NeRF 與 3D Gaussian Splatting 等新一代表示法，在反光、細薄結構與稀疏視角下重建更完整的場景。</p>
+            <span class="tag">Neural Rendering</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOLUTIONS -->
+    <section class="sec sec--alt" id="solutions">
+      <div class="wrap">
+        <header class="sec__head reveal">
+          <p class="eyebrow"><i></i>解決方案</p>
+          <h2>飛行、重建、交付，<br>一氣呵成。</h2>
+        </header>
+
+        <div class="split reveal">
+          <div class="split__txt">
+            <h3>自動飛行系統</h3>
+            <p>一鍵規劃、自動起降、全程自主執行任務，讓採集不再依賴飛手經驗，並確保每次飛行的影像重疊率與覆蓋一致。</p>
+            <ul class="ticks">
+              <li>依區域、高度與相機參數自動產生航線</li>
+              <li>三維空間避障與地形跟隨</li>
+              <li>可部署於機載運算平台，支援邊緣即時處理</li>
+            </ul>
+          </div>
+          <figure class="split__vis" aria-label="覆蓋式航線示意">
+            <svg viewBox="0 0 480 300" role="img" aria-label="無人機覆蓋式航線示意圖">
+              <g stroke="#38e1ff" stroke-opacity=".14"><path d="M0 50h480M0 100h480M0 150h480M0 200h480M0 250h480M60 0v300M120 0v300M180 0v300M240 0v300M300 0v300M360 0v300M420 0v300"/></g>
+              <rect x="70" y="50" width="340" height="200" rx="6" fill="#38e1ff" fill-opacity=".05" stroke="#38e1ff" stroke-opacity=".5" stroke-dasharray="5 5"/>
+              <g fill="#38e1ff" fill-opacity=".12" stroke="#38e1ff" stroke-opacity=".3"><rect x="70" y="50" width="340" height="40"/><rect x="70" y="100" width="340" height="40"/><rect x="70" y="150" width="340" height="40"/><rect x="70" y="200" width="340" height="40" /></g>
+              <path d="M70 70H410V120H70V170H410V220H70" fill="none" stroke="#7cffb2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="9 6"/>
+              <circle cx="70" cy="70" r="6" fill="#7cffb2"/>
+              <g transform="translate(300 120)">
+                <circle r="22" fill="#ffd166" fill-opacity=".1" stroke="#ffd166" stroke-opacity=".5"/>
+                <path d="M-12-12L12 12M12-12L-12 12" stroke="#e8f1fa" stroke-width="2.5" stroke-linecap="round"/>
+                <g fill="#05080d" stroke="#e8f1fa" stroke-width="1.5"><circle cx="-12" cy="-12" r="5"/><circle cx="12" cy="-12" r="5"/><circle cx="-12" cy="12" r="5"/><circle cx="12" cy="12" r="5"/></g>
+                <rect x="-5" y="-5" width="10" height="10" rx="2" fill="#38e1ff"/>
+              </g>
+              <g font-size="11" fill="#9fb3c8" font-family="ui-monospace,Consolas,monospace"><text x="74" y="44">coverage area</text><text x="330" y="104">image overlap</text></g>
+            </svg>
+          </figure>
+        </div>
+
+        <div class="split split--rev reveal">
+          <div class="split__txt">
+            <h3>3D 重建引擎</h3>
+            <p>把航拍影像與感測資料轉換為高密度點雲、三角網格與紋理模型，並以自研演算法提升速度與在困難場景下的完整度。</p>
+            <ul class="ticks">
+              <li>SfM／MVS 管線，支援大規模影像集</li>
+              <li>網格簡化與多層級細節（LOD），利於網頁瀏覽</li>
+              <li>可量測：距離、面積、體積與剖面分析</li>
+            </ul>
+          </div>
+          <figure class="split__vis" aria-label="3D 重建三階段示意">
+            <svg id="recon" viewBox="0 0 480 220" role="img" aria-label="點雲、網格、紋理模型三階段示意圖"></svg>
+          </figure>
+        </div>
+
+        <div class="split reveal">
+          <div class="split__txt">
+            <h3>數位孿生與演算法授權</h3>
+            <p>將重建成果發佈為可瀏覽、可比對、可持續更新的數位孿生；也提供演算法 SDK 與客製研發，整合至你的既有系統。</p>
+            <ul class="ticks">
+              <li>多期資料比對，自動偵測場景變化</li>
+              <li>API／SDK 與私有化部署</li>
+              <li>聯合研發與客製演算法服務</li>
+            </ul>
+          </div>
+          <figure class="split__vis" aria-label="資料平台示意">
+            <svg viewBox="0 0 480 300" role="img" aria-label="資料流程示意圖">
+              <g font-size="12" fill="#cfe3f5" font-family="ui-monospace,Consolas,monospace" text-anchor="middle">
+                <rect x="14" y="115" width="94" height="70" rx="10" fill="#0b1520" stroke="#38e1ff" stroke-opacity=".6"/><text x="61" y="155">Capture</text>
+                <rect x="132" y="115" width="94" height="70" rx="10" fill="#0b1520" stroke="#38e1ff" stroke-opacity=".6"/><text x="179" y="155">Reconstruct</text>
+                <rect x="250" y="115" width="94" height="70" rx="10" fill="#0b1520" stroke="#38e1ff" stroke-opacity=".6"/><text x="297" y="155">Analyze</text>
+                <rect x="368" y="115" width="98" height="70" rx="10" fill="#38e1ff" fill-opacity=".15" stroke="#38e1ff"/><text x="417" y="155">Deliver</text>
+              </g>
+              <g stroke="#38e1ff" stroke-width="2" fill="none"><path d="M108 150h24M226 150h24M344 150h24"/></g>
+              <path d="M417 190v50H61v-55" fill="none" stroke="#7cffb2" stroke-opacity=".7" stroke-dasharray="6 5"/>
+              <text x="240" y="262" font-size="11" fill="#7cffb2" text-anchor="middle" font-family="ui-monospace,Consolas,monospace">re-fly &amp; update loop</text>
+            </svg>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- PIPELINE -->
+    <section class="sec" id="pipeline">
+      <div class="wrap">
+        <header class="sec__head reveal">
+          <p class="eyebrow"><i></i>運作方式</p>
+          <h2>五個步驟，<br>從天空到可用的 3D 模型。</h2>
+        </header>
+        <ol class="steps">
+          <li class="reveal"><b>01</b><h3>規劃</h3><p>圈選區域、設定精度需求，系統自動產生航線與拍攝參數。</p></li>
+          <li class="reveal"><b>02</b><h3>飛行</h3><p>自主起飛、避障與地形跟隨，並在飛行中即時評估影像品質。</p></li>
+          <li class="reveal"><b>03</b><h3>定位</h3><p>融合視覺、慣性與衛星定位，取得每張影像精確的位置與姿態。</p></li>
+          <li class="reveal"><b>04</b><h3>重建</h3><p>生成點雲、網格與紋理模型，必要時以神經渲染補足細節。</p></li>
+          <li class="reveal"><b>05</b><h3>交付</h3><p>發佈到網頁瀏覽、量測與比對，或輸出到你既有的 GIS／BIM 工作流程。</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- SAFETY -->
+    <section class="sec sec--alt" id="safety">
+      <div class="wrap safety">
+        <div class="reveal">
+          <p class="eyebrow"><i></i>安全與可靠</p>
+          <h2>自主飛行，<br>安全永遠優先。</h2>
+          <p class="muted">演算法在上機之前先經過模擬驗證；飛行時以多層保護降低風險，並遵循當地民航法規。</p>
+        </div>
+        <ul class="safety__list">
+          <li class="reveal"><h3>模擬優先</h3><p>以 SITL／HITL 模擬環境大量測試避障與路徑規劃，先找出邊緣案例再實飛。</p></li>
+          <li class="reveal"><h3>失效保護</h3><p>通訊中斷、低電量或定位失效時，自動懸停、返航或降落。</p></li>
+          <li class="reveal"><h3>地理圍欄與避障</h3><p>飛行邊界與禁航區強制執行，並結合感測器偵測障礙物。</p></li>
+          <li class="reveal"><h3>資料可追溯</h3><p>航跡、原始影像、模型版本完整記錄；資料傳輸與儲存採加密與權限控管。</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="sec" id="about">
+      <div class="wrap about">
+        <div class="reveal">
+          <p class="eyebrow"><i></i>關於我們</p>
+          <h2>以演算法，讓機器<br>理解並重建空間。</h2>
+        </div>
+        <div class="about__txt reveal">
+          <p>VisionMap 是一間專注於無人機自動飛行與 3D 建模演算法的研發公司。我們相信，當飛行與重建被當成同一個問題來設計，資料採集會更有效率，模型也會更準確。</p>
+          <p>團隊背景涵蓋電腦視覺、機器人學、攝影測量與嵌入式系統，以研究的嚴謹與工程的紀律推動每一項技術落地。</p>
+          <div class="values">
+            <div><b>Precision</b><span>精準</span></div>
+            <div><b>Autonomy</b><span>自主</span></div>
+            <div><b>Openness</b><span>開放整合</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAREERS CTA -->
+    <section class="band">
+      <div class="wrap band__in reveal">
+        <div>
+          <h2>一起讓無人機看得更清楚。</h2>
+          <p>我們正在尋找電腦視覺、SLAM、3D 重建與飛控／嵌入式系統的工程師與研究員。</p>
+        </div>
+        <a class="btn" href="mailto:founder@visionmap.tech?subject=Career%20Inquiry">查看職缺</a>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="sec" id="contact">
+      <div class="wrap contact">
+        <div class="reveal">
+          <p class="eyebrow"><i></i>聯絡我們</p>
+          <h2>聊聊你的<br>空中數據專案。</h2>
+          <p class="muted">告訴我們你的應用場景，我們會在 2 個工作天內回覆。</p>
+          <p class="mail"><a href="mailto:founder@visionmap.tech">founder@visionmap.tech</a></p>
+        </div>
+        <form class="form reveal" id="form" novalidate>
+          <label>姓名<input name="name" required autocomplete="name"></label>
+          <label>Email<input name="email" type="email" required autocomplete="email"></label>
+          <label>公司／組織<input name="org" autocomplete="organization"></label>
+          <label>需求類型
+            <select name="type">
+              <option>自動飛行系統</option><option>3D 重建／測繪</option><option>數位孿生平台</option><option>演算法授權／聯合研發</option><option>其他</option>
+            </select>
+          </label>
+          <label class="full">需求說明<textarea name="msg" rows="4" required></textarea></label>
+          <button class="btn full" type="submit">送出訊息</button>
+          <p class="form__note" id="formNote" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap foot__in">
+      <a class="logo" href="#top"><svg width="22" height="22" viewBox="0 0 32 32" aria-hidden="true"><path d="M5 8l11 17L27 8" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/></svg><span>VisionMap</span></a>
+      <p>© <span id="year"></span> VisionMap. All rights reserved.</p>
+      <nav aria-label="頁尾"><a href="#technology">核心技術</a><a href="#solutions">解決方案</a><a href="#contact">聯絡</a></nav>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
